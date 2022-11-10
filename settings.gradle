@@ -1,0 +1,5 @@
+
+rootProject.name = "omdb"
+include ':app'
+include ':domain'
+include ':data'

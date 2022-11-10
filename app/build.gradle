@@ -1,0 +1,99 @@
+plugins {
+    id("org.jetbrains.kotlin.android")
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+}
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures{
+        dataBinding true
+        viewBinding true
+    }
+}
+
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.7.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.0'
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:4.4.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.4.1"
+    implementation "androidx.room:room-runtime:2.2.4"
+    implementation "androidx.room:room-ktx:2.2.4"
+    kapt "androidx.room:room-compiler:2.2.4"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "androidx.appcompat:appcompat:1.5.1"
+    implementation 'com.google.android.material:material:1.5.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    kapt 'com.github.bumptech.glide:compiler:4.13.0'
+
+
+
+
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt  "com.google.dagger:hilt-android-compiler:$versions.hilt"
+
+    // Hilt Robolectric tests.
+    testImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+
+    //Pagination
+    implementation 'ru.alexbykov:nopaginate:0.9.9'
+    // Hilt instrumented tests.
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:2.71828"
+    implementation 'jp.wasabeef:picasso-transformations:2.2.1'
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
+    //Shimmer Effect
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    //StatusBar Util
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    implementation 'com.github.jakob-grabner:Circle-Progress-View:1.4'
+
+}
